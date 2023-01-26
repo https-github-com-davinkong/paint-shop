@@ -19,6 +19,9 @@ public class ContractorsDto implements Serializable {
     private Boolean isAdmin;
 
     public ContractorsDto(Contractors contractors){
+        if (contractors.getId() != null){
+            this.id = contractors.getId();
+        }
         if (contractors.getFirstName() != null){
             this.firstName = contractors.getFirstName();
         }

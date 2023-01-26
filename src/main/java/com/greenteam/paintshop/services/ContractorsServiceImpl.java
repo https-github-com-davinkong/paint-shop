@@ -27,7 +27,7 @@ public class ContractorsServiceImpl implements ContractorsService {
     public List<String> addContractors(ContractorsDto contractorsDto){
         List<String> response = new ArrayList<>();
         Contractors contractors = new Contractors(contractorsDto);
-//        contractors.setIsAdmin(false);
+
         if (contractors.getEmail().contains("admin")){
             contractors.setIsAdmin(true);
         }else {
