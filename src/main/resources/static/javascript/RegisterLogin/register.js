@@ -34,7 +34,7 @@ const handleSubmit = async (e) =>{
     if (response.status === 200){
         window.location.replace(responseArr[0])
     }else if (response.status === 500){
-        alert("Username already existed")
+        alert("Email already existed")
         window.location.replace("http://localhost:8080/html/RegisterLogin/register.html")
     }
 }
