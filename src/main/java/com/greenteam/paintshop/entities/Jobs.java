@@ -1,6 +1,7 @@
 package com.greenteam.paintshop.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.greenteam.paintshop.dtos.JobsDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,4 +39,15 @@ public class Jobs {
     @JoinColumn(name = "client_id")
     private Clients client;
 
+    public Jobs(JobsDto jobsDto) {
+        if(jobsDto.getJobTitle() != null) {
+            this.jobTitle = jobsDto.getJobTitle();
+        }
+        if(jobsDto.getDate() != null) {
+            this.date = jobsDto.getDate();
+        }
+        if(jobsDto.getClient() != null) {
+            this.client = jobsDto.getClient();
+        }
+    }
 }
