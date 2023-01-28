@@ -1,5 +1,6 @@
 package com.greenteam.paintshop.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.greenteam.paintshop.dtos.ContractorsDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -29,6 +30,10 @@ public class Contractors {
     @Column
     private Boolean isAdmin;
 
+
+    @ManyToOne
+    @JsonBackReference
+    private Jobs jobs;
     public Contractors(ContractorsDto contractorsDto){
         if (contractorsDto.getFirstName() != null){
             this.firstName = contractorsDto.getFirstName();

@@ -5,6 +5,7 @@ import com.greenteam.paintshop.dtos.JobsDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.Instant;
@@ -14,6 +15,7 @@ import java.util.Set;
 @Table (name = "jobs")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Jobs {
 
     @Id
@@ -32,7 +34,7 @@ public class Jobs {
 //    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
 //    private List<Product> products;
 
-    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "jobs", cascade = CascadeType.ALL)
     private Set<Contractors> contractors;
 
     @ManyToOne
