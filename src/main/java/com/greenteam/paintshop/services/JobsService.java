@@ -15,7 +15,7 @@ public interface JobsService {
     void deleteJobById(Long jobId);
 
     @Transactional
-    void updateJobById(Long jobId);
+    void updateJob(JobsDto jobsDto);
 
     List<JobsDto> getAllJobs();
 
