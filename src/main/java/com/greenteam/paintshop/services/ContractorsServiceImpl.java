@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static javax.swing.JOptionPane.showMessageDialog;
 
@@ -66,4 +67,28 @@ public class ContractorsServiceImpl implements ContractorsService {
         return response;
     }
 
+    @Override
+    public Optional<ContractorsDto> getContractorsById(Long contractorId){
+        Optional<Contractors> contractorsOptional = contractorsRepository.findById(contractorId);
+        if (contractorsOptional.isPresent()){
+            return Optional.of(new ContractorsDto(contractorsOptional.get()));
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public List<ContractorsDto> getAllContractors(){
+        List<Contractors> contractorsList = contractorsRepository.findAll();
+        return contractorsList.stream().map(contractors -> new ContractorsDto(contractors)).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public void deleteContractorsById(Long contractorId){
+        Contractors contractors = contractorsRepository.getById(contractorId);
+        if (contractors == null){
+            throw new RuntimeException("Not found");
+        }
+        contractorsRepository.deleteById(contractorId);
+    }
 }
