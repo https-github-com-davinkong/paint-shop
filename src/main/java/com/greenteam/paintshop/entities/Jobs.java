@@ -37,7 +37,7 @@ public class Jobs {
     @JsonIgnore
     private List<Products> products;
 
-    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "jobs", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Contractors> contractors;
 
