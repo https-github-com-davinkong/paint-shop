@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -31,8 +32,8 @@ public class Jobs {
     private Instant date;
 
 
-//    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
-//    private List<Product> products;
+    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
+    private List<Products> products;
 
     @OneToMany(mappedBy = "jobs", cascade = CascadeType.ALL)
     private Set<Contractors> contractors;

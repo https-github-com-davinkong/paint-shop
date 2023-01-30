@@ -3,12 +3,14 @@ package com.greenteam.paintshop.dtos;
 import com.greenteam.paintshop.entities.Clients;
 import com.greenteam.paintshop.entities.Contractors;
 import com.greenteam.paintshop.entities.Jobs;
+import com.greenteam.paintshop.entities.Products;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -20,7 +22,7 @@ public class JobsDto implements Serializable {
     private String jobTitle;
     private Instant date;
     private Set<Contractors> contractors;
-//    private List<Product> products;
+    private List<Products> products;
     private Clients client;
 
     public JobsDto(Jobs jobs) {
@@ -39,9 +41,9 @@ public class JobsDto implements Serializable {
         if(jobs.getClient() != null) {
             this.client = jobs.getClient();
         }
-//        if(jobs.getProduct() != null) {
-//            this.products = jobs.getProduct();
-//        }
+        if(jobs.getProducts() != null) {
+            this.products = jobs.getProducts();
+        }
 
     }
 }
