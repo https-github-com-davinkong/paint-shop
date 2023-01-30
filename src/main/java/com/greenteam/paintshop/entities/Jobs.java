@@ -1,6 +1,7 @@
 package com.greenteam.paintshop.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.greenteam.paintshop.dtos.JobsDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -33,9 +34,11 @@ public class Jobs {
 
 
     @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Products> products;
 
-    @OneToMany(mappedBy = "jobs", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Contractors> contractors;
 
     @ManyToOne
