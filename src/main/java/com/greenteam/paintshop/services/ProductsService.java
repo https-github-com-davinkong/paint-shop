@@ -21,6 +21,8 @@ public interface ProductsService {
     //Finding all products
     List<ProductsDto> getAllProductsByJobId(Long jobId);
 
+
+
     //Getting a product by the product id
     Optional<ProductsDto> getProductById(Long productId);
 }

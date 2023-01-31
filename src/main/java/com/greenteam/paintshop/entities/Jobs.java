@@ -1,6 +1,7 @@
 package com.greenteam.paintshop.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.greenteam.paintshop.dtos.JobsDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -31,10 +33,12 @@ public class Jobs {
     private Instant date;
 
 
-//    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
-//    private List<Product> products;
-
     @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<Products> products;
+
+    @OneToMany(mappedBy = "jobs", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Contractors> contractors;
 
     @ManyToOne

@@ -1,6 +1,7 @@
 package com.greenteam.paintshop.entities;
 
-//import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.greenteam.paintshop.dtos.ProductsDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,7 +28,7 @@ public class Products {
             this.name = productsDto.getName();
         }
     }
-//    @ManyToOne
-//    @JsonBackReference
-//    private Jobs job;
+    @ManyToOne
+    @JsonBackReference
+    private Jobs jobs;
 }
