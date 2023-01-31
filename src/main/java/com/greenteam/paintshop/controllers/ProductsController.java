@@ -24,6 +24,14 @@ public class ProductsController {
         productsService.addProduct(productsDto, jobId);
     }
 
+
+    @PostMapping("/")
+    public void addAProduct(@RequestBody ProductsDto productsDto){
+        productsService.addAProduct(productsDto);
+    }
+
+
+
     //Delete a product
     @DeleteMapping("/{productsId}")
     public void deleteProductById(@PathVariable Long productsId){

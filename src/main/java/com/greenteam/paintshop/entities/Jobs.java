@@ -33,7 +33,7 @@ public class Jobs {
     private Instant date;
 
 
-    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "jobs", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Products> products;
 
@@ -42,6 +42,7 @@ public class Jobs {
     private Set<Contractors> contractors;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "client_id")
     private Clients client;
 

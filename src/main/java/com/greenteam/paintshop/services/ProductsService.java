@@ -11,6 +11,10 @@ public interface ProductsService {
     @Transactional
     void addProduct(ProductsDto productsDto, Long jobId);
 
+    @Transactional
+    void addAProduct(ProductsDto productsDto);
+
+
     //Deleting a product
     @Transactional
     void deleteProductById(Long productId);

@@ -33,7 +33,17 @@ public class ProductsServiceImpl implements ProductsService {
        productsRepository.saveAndFlush(products);
    }
 
-   //Deleting a product
+
+    @Override
+    @Transactional
+    public void addAProduct(ProductsDto productsDto) {
+        Products products = new Products(productsDto);
+        productsRepository.saveAndFlush(products);
+    }
+
+
+
+    //Deleting a product
     @Override
     @Transactional
     public void deleteProductById(Long productId) {
