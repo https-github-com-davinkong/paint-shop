@@ -28,7 +28,7 @@
 
             <td th:text="${contractor.id}"></td>
             <td th:text="${contractor.firstName}"></td>
-            <td th:text="${contractor.lastName}"></td></label>
+            <td th:text="${contractor.lastName}"></td>
             <td th:text="${contractor.email}"></td>
             <td>
                 <a th:href="@{deleteContractor/{contractorId}(contractorId=${listAllContractors[iterStat.index].id})}"
@@ -39,5 +39,7 @@
 
     </div>
 </table>
+<script src="/javascript/shopOwner/shopOwnerPage.js" type="application/javascript"></script>
+
 </body>
 </html>

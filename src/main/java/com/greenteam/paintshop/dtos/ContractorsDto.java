@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,6 +20,8 @@ public class ContractorsDto implements Serializable {
     private String email;
     private String password;
     private Boolean isAdmin;
+    private Set<JobsDto> jobsDtoSet = new HashSet<>();
+
 
     public ContractorsDto(Contractors contractors){
         if (contractors.getId() != null){
@@ -36,6 +41,9 @@ public class ContractorsDto implements Serializable {
         }
         if (contractors.getIsAdmin() != null){
             this.isAdmin = contractors.getIsAdmin();
+        }
+        if (contractors.getJob() != null){
+            this.jobsDtoSet = new HashSet<JobsDto>();
         }
     }
 }

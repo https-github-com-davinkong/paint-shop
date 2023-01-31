@@ -33,7 +33,7 @@ public class Contractors {
 
     @ManyToOne
     @JsonBackReference
-    private Jobs jobs;
+    private Jobs job;
     public Contractors(ContractorsDto contractorsDto){
         if (contractorsDto.getFirstName() != null){
             this.firstName = contractorsDto.getFirstName();

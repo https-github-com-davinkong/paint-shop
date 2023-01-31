@@ -37,4 +37,6 @@ public class ShopOwnerUI {
         //	after delete the contractor from database, redirect to "/viewAllContractors" page
         return "redirect:/viewAllContractors";
     }
+
+
 }

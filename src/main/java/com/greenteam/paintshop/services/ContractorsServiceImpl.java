@@ -46,11 +46,13 @@ public class ContractorsServiceImpl implements ContractorsService {
 
         if (contractorsOptional.isPresent()){
             if (passwordEncoder.matches(contractorsDto.getPassword(), contractorsOptional.get().getPassword())){
+
                 if (contractorsOptional.get().getIsAdmin().equals(true)){
                     response.add("http://localhost:8080/shopOwner");
                     response.add(String.valueOf(contractorsOptional.get().getId()));
+
                 }else {
-                    response.add("http://localhost:8080/html/Contractors/contractorPage.html");
+                    response.add("http://localhost:8080/contractorPage");
                     response.add(String.valueOf(contractorsOptional.get().getId()));
                 }
 
