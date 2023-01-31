@@ -2,11 +2,6 @@ let loginForm = document.getElementById('login-form')
 let loginEmail = document.getElementById('login-email')
 let loginPassword = document.getElementById('login-password')
 
-//Cookie
-const cookieArr = document.cookie.split("=")
-const userId = cookieArr[1];
-
-
 
 const headers = {
     'Content-Type':'application/json'
@@ -34,7 +29,7 @@ const handleSubmit = async (e)=>{
 
 
     if(response.status === 200){
-        document.cookie = `userId=${responseArr[1]}`
+        document.cookie = `contractorsId=${responseArr[1]}; path=/; expires=Tue, 19 Jan 2038 03:14:07 GMT`
         window.location.replace(responseArr[0])
 
     }else{
@@ -42,14 +37,9 @@ const handleSubmit = async (e)=>{
         window.location.replace("http://localhost:8080/html/RegisterLogin/login.html")
     }
 
+}
 
-}
-function handleLogout(){
-    let c = document.cookie.split(";");
-    for(let i in c){
-        document.cookie = /^[^=]+/.exec(c[i])[0]+"=;expires=Thu, 01 Jan 1970 00:00:00 GMT"
-    }
-}
+
 
 loginForm.addEventListener("submit", handleSubmit)
 

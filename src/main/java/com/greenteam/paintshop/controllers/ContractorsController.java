@@ -30,7 +30,7 @@ public class ContractorsController {
     }
 
     @GetMapping("/{contractorId}")
-    public Optional<ContractorsDto> getContractorsByID(@PathVariable Long contractorId){
+    public Optional<ContractorsDto> getContractorsById(@PathVariable Long contractorId){
         return contractorsService.getContractorsById(contractorId);
     }
 
