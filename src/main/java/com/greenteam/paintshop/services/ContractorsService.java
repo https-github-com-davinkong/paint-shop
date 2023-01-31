@@ -20,4 +20,6 @@ public interface ContractorsService {
 
     @Transactional
     void deleteContractorsById(Long contractorId);
+
+    List<String> getRoleById(Long contractorId);
 }

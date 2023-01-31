@@ -79,6 +79,15 @@ public class ContractorsServiceImpl implements ContractorsService {
     }
 
     @Override
+    public List<String> getRoleById(Long contractorId){
+        List<String> response = new ArrayList<>();
+        Optional<Contractors> contractorsOptional = contractorsRepository.findById(contractorId);
+        if (contractorsOptional.isPresent()){
+            response.add(String.valueOf(contractorsOptional.get().getIsAdmin()));
+        }
+        return response;
+    }
+    @Override
     public List<ContractorsDto> getAllContractors(){
         List<Contractors> contractorsList = contractorsRepository.findAll();
         return contractorsList.stream().map(contractors -> new ContractorsDto(contractors)).collect(Collectors.toList());

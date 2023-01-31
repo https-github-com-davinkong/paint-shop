@@ -12,13 +12,14 @@ public class ContractorUI {
     @Autowired
     private ContractorsService contractorsService;
 
-
+    //Home page of contractors
     @GetMapping("/contractorPage")
     public String contractorPage( Model model){
 
         return "contractorPage";
     }
 
+    //Get a contractor by id
     @GetMapping("getContractor/{contractorId}")
     public String contractorById(@PathVariable Long contractorId, Model model){
         model.addAttribute("contractorById", contractorsService.getContractorsById(contractorId));
