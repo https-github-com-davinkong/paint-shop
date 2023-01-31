@@ -42,7 +42,7 @@ public class ContractorsDto implements Serializable {
         if (contractors.getIsAdmin() != null){
             this.isAdmin = contractors.getIsAdmin();
         }
-        if (contractors.getJob() != null){
+        if (contractors.getJobs() != null){
             this.jobsDtoSet = new HashSet<JobsDto>();
         }
     }

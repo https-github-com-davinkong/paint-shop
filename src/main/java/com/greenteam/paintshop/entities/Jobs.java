@@ -33,7 +33,7 @@ public class Jobs {
     private Instant date;
 
 
-    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "jobs", cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Products> products;
 
