@@ -1,7 +1,9 @@
 package com.greenteam.paintshop.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.greenteam.paintshop.dtos.JobsDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -34,15 +36,15 @@ public class Jobs {
 
 
     @OneToMany(mappedBy = "jobs", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JsonManagedReference
     private List<Products> products;
 
     @OneToMany(mappedBy = "jobs", cascade = CascadeType.ALL)
-    @JsonIgnore
+    @JsonManagedReference
     private Set<Contractors> contractors;
 
     @ManyToOne
-    @JsonIgnore
+    @JsonManagedReference
     @JoinColumn(name = "client_id")
     private Clients client;
 
@@ -53,8 +55,8 @@ public class Jobs {
         if(jobsDto.getDate() != null) {
             this.date = jobsDto.getDate();
         }
-        if(jobsDto.getClient() != null) {
-            this.client = jobsDto.getClient();
-        }
+//        if(jobsDto.getClient() != null) {
+//            this.client = jobsDto.getClient();
+//        }
     }
 }
