@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -21,9 +23,9 @@ public class JobsDto implements Serializable {
     private Long id;
     private String jobTitle;
     private Instant date;
-    private Set<Contractors> contractors;
-    private List<Products> products;
-    private Clients client;
+    private Set<ContractorsDto> contractorsDto = new HashSet<>();
+    private List<ProductsDto> productsDto = new ArrayList<>();
+    private ClientsDto clientDto;
 
     public JobsDto(Jobs jobs) {
         if(jobs.getId() != null) {
@@ -35,15 +37,10 @@ public class JobsDto implements Serializable {
         if(jobs.getDate() != null) {
             this.date = jobs.getDate();
         }
-        if(jobs.getContractors() != null) {
-            this.contractors = jobs.getContractors();
-        }
-        if(jobs.getClient() != null) {
-            this.client = jobs.getClient();
-        }
-        if(jobs.getProducts() != null) {
-            this.products = jobs.getProducts();
-        }
+        this.clientDto = new ClientsDto();
+        this.clientDto.setFirstName(jobs.getClient().getFirstName());
+        this.clientDto.setId(jobs.getClient().getId());
+        this.clientDto.setLastName(jobs.getClient().getLastName());
 
     }
 }

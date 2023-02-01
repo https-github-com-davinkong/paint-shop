@@ -53,8 +53,8 @@ public class Jobs {
         if(jobsDto.getDate() != null) {
             this.date = jobsDto.getDate();
         }
-        if(jobsDto.getClient() != null) {
-            this.client = jobsDto.getClient();
-        }
+//        if(jobsDto.getClient() != null) {
+//            this.client = jobsDto.getClient();
+//        }
     }
 }
