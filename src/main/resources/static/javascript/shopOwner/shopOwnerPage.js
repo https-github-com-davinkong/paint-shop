@@ -2,33 +2,39 @@
 const cookieArr = document.cookie.split("=")
 const contractorsId = cookieArr[1];
 
-
 const headers = {
     'Content-Type':'application/json'
 }
 
 const baseUrl = 'http://localhost:8080/api/v1/contractors'
 
-
+//check Login user only
 if (contractorsId == null){
     window.alert("You are not authorized to access this page...");
     window.location.replace("http://localhost:8080/html/RegisterLogin/login.html");
 }
-async function getContractorsById(contractorsId) {
-    await fetch(`${baseUrl}/${contractorsId}`, {
+
+//check Admin access only
+async function getRoleById(contractorsId) {
+    await fetch(`${baseUrl}/checkRole/${contractorsId}`, {
         method: "GET",
         headers: headers
     })
         .then(response => response.json())
-        .then(data => console.log(data))
+        .then(data => {
+            if (data.toString().match("true") ){
+                console.log("admin")
+            }else{
+                console.log("contractor")
+                window.alert("You are not authorized to access this page...");
+                window.location.replace("http://localhost:8080/html/RegisterLogin/login.html");
+            }
+    })
         .catch(err => console.error(err))
 
+
 }
-
-getContractorsById(contractorsId).then()
-
-
-
+getRoleById(contractorsId).then();
 
 function handleLogout(){
     let c = document.cookie.split(";");

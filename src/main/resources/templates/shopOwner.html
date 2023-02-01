@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Shop Owner Page</title>
@@ -10,14 +11,11 @@
 </head>
 <body>
 <a id="logout" href="/html/RegisterLogin/login.html" class="btn btn-warning btn-lg" onclick="handleLogout()">
-    <span class="glyphicon glyphicon-log-out"></span> Log out
+    Log out
 </a>
   <h2 style="text-align: center">Shop Owner Page</h2>
 <br>
-<br>
-
 <a th:href="@{/viewAllContractors}" class="btn btn-success btn-lg">View All Contractors</a>
-
 
 <script src="/javascript/shopOwner/shopOwnerPage.js" type="application/javascript"></script>
 

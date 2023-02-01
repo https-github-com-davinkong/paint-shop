@@ -13,7 +13,7 @@ public class ShopOwnerUI {
     @Autowired
     private ContractorsService contractorsService;
 
-
+    //Home page of Shop owner
     @GetMapping("/shopOwner")
     public String shopOwnerPage(Model model){
 
