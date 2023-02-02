@@ -24,7 +24,7 @@ public class ClientsServiceImpl implements ClientsService {
     public void addClients(ClientsDto clientsDto){
         Clients clients = new Clients(clientsDto);
         clientsRepository.saveAndFlush(clients);
-        System.out.println("client saved" + clients);
+        // System.out.println("client saved" + clients);
     }
 
     // delete a client by client id
