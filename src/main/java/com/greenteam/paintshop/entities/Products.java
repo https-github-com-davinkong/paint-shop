@@ -29,6 +29,5 @@ public class Products {
         }
     }
     @ManyToOne
-    @JsonBackReference
     private Jobs jobs;
 }

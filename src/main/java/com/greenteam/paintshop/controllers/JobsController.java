@@ -19,6 +19,7 @@ public class JobsController {
 
     @PostMapping("/job")
     public ResponseEntity<List<String>> addJob(@RequestBody JobsDto jobsDto) {
+        System.out.println(jobsDto);
         List<String> response = new ArrayList<>();
         jobsService.addJob(jobsDto);
         response.add("Job added successfully");

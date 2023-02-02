@@ -31,7 +31,7 @@ public class Contractors {
     private Boolean isAdmin;
 
 
-    @ManyToOne
+    @OneToOne(mappedBy = "contractors", cascade = CascadeType.ALL)
     @JsonBackReference
     private Jobs jobs;
     public Contractors(ContractorsDto contractorsDto){

@@ -36,12 +36,11 @@ public class Jobs {
 
 
     @OneToMany(mappedBy = "jobs", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonBackReference
     private List<Products> products;
 
-    @OneToMany(mappedBy = "jobs", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private Set<Contractors> contractors;
+    @OneToOne
+    private Contractors contractors;
 
     @ManyToOne
     @JsonManagedReference
