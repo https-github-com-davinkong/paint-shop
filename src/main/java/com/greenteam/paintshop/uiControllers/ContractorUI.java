@@ -13,9 +13,10 @@ public class ContractorUI {
     private ContractorsService contractorsService;
 
     //Home page of contractors
-    @GetMapping("/contractorPage")
-    public String contractorPage( Model model){
-
+    @GetMapping("/contractorPage/{contractorId}")
+    public String contractorPage(@PathVariable Long contractorId, Model model){
+        model.addAttribute("jobsById", contractorsService.getJobsByContractorId(contractorId));
+        model.addAttribute("contractorById", contractorsService.getContractorsById(contractorId));
         return "contractorPage";
     }
 
@@ -23,7 +24,6 @@ public class ContractorUI {
     @GetMapping("getContractor/{contractorId}")
     public String contractorById(@PathVariable Long contractorId, Model model){
         model.addAttribute("contractorById", contractorsService.getContractorsById(contractorId));
-
         return "contractorPage";
     }
 

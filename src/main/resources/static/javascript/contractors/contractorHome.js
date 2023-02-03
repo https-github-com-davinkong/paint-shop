@@ -2,6 +2,8 @@
 const cookieArr = document.cookie.split("=")
 const contractorsId = cookieArr[1];
 
+
+
 const headers = {
     'Content-Type':'application/json'
 }
@@ -29,7 +31,6 @@ async function getRoleById(contractorsId) {
             }
         })
         .catch(err => console.error(err))
-
 
 }
 getRoleById(contractorsId).then();

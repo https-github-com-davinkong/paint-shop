@@ -1,6 +1,7 @@
 package com.greenteam.paintshop.controllers;
 
 import com.greenteam.paintshop.dtos.ContractorsDto;
+import com.greenteam.paintshop.dtos.JobsDto;
 import com.greenteam.paintshop.services.ContractorsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -34,8 +35,14 @@ public class ContractorsController {
 
     //Get a contractor information by ID
     @GetMapping("/{contractorId}")
-    public Optional<ContractorsDto> getContractorsById(@PathVariable Long contractorId){
+    public List<ContractorsDto> getContractorsById(@PathVariable Long contractorId){
         return contractorsService.getContractorsById(contractorId);
+    }
+
+    //For contractors to see their jobs, clients, and products. Get it from contractor's id
+    @GetMapping("/jobs/{contractorId}")
+    public List<JobsDto> getJobsByContractorId(@PathVariable Long contractorId){
+        return contractorsService.getJobsByContractorId(contractorId);
     }
 
     //Get Role to check authorization
