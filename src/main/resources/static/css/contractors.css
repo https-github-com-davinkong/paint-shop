@@ -1,0 +1,69 @@
+
+body{
+    background: green;
+    background: linear-gradient(to right,darkolivegreen, turquoise, darkolivegreen);
+}
+
+.card {
+    position: relative;
+    height: 700px;
+    width: 300px;
+    background-color: whitesmoke;
+    margin: 40px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.header {
+    position: absolute;
+    height: 220px;
+    width: 95%;
+    margin:0 auto;
+    left: 0;
+    right: 0;
+    top: -10px;
+    border-radius: 12px;
+    background-image: linear-gradient(to right, darkolivegreen, darkgreen);
+}
+
+
+.header div{
+    position: absolute;
+    color: white;
+    font-size: 26px;
+    font-weight: 600;
+    top: 30px;
+    left: 50px;
+}
+
+.header p{
+    position: absolute;
+    color: black;
+    font-size: medium;
+}
+
+.body, table {
+    position: absolute;
+    height: 126px;
+    left: 5px;
+    right: 5px;
+    top: 30%;
+    border-radius: 12px;
+}
+
+.body table {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+
+}
+
+
+
+.body :hover {
+    background-color: paleturquoise;
+    cursor: pointer;
+}
+
