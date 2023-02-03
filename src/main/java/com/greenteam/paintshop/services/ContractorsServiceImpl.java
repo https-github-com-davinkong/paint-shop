@@ -1,14 +1,18 @@
 package com.greenteam.paintshop.services;
 
 import com.greenteam.paintshop.dtos.ContractorsDto;
+import com.greenteam.paintshop.dtos.JobsDto;
 import com.greenteam.paintshop.entities.Contractors;
+import com.greenteam.paintshop.entities.Jobs;
 import com.greenteam.paintshop.repositories.ContractorsRepository;
+import com.greenteam.paintshop.repositories.JobsRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -20,7 +24,8 @@ public class ContractorsServiceImpl implements ContractorsService {
 
     @Autowired
     private ContractorsRepository contractorsRepository;
-
+    @Autowired
+    private JobsRepository jobsRepository;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Override
@@ -52,7 +57,7 @@ public class ContractorsServiceImpl implements ContractorsService {
                     response.add(String.valueOf(contractorsOptional.get().getId()));
 
                 }else {
-                    response.add("http://localhost:8080/contractorPage");
+                    response.add("http://localhost:8080/contractorPage/"+ contractorsOptional.get().getId());
                     response.add(String.valueOf(contractorsOptional.get().getId()));
                 }
 
@@ -70,12 +75,22 @@ public class ContractorsServiceImpl implements ContractorsService {
     }
 
     @Override
-    public Optional<ContractorsDto> getContractorsById(Long contractorId){
+    public List<ContractorsDto> getContractorsById(Long contractorId){
         Optional<Contractors> contractorsOptional = contractorsRepository.findById(contractorId);
         if (contractorsOptional.isPresent()){
-            return Optional.of(new ContractorsDto(contractorsOptional.get()));
+            return contractorsOptional.stream().map(contractors -> new ContractorsDto(contractors)).collect(Collectors.toList());
         }
-        return Optional.empty();
+        return Collections.emptyList();
+    }
+
+    @Override
+    public List<JobsDto> getJobsByContractorId(Long contractorId){
+        Optional<Contractors> contractorsJob = contractorsRepository.findById(contractorId);
+        if (contractorsJob.isPresent()){
+            List<Jobs> jobsList = jobsRepository.findAllByContractorsEquals(contractorsJob.get());
+            return jobsList.stream().map(jobs -> new JobsDto(jobs)).collect(Collectors.toList());
+        }
+        return Collections.emptyList();
     }
 
     @Override
@@ -89,8 +104,8 @@ public class ContractorsServiceImpl implements ContractorsService {
     }
     @Override
     public List<ContractorsDto> getAllContractors(){
-        List<Contractors> contractorsList = contractorsRepository.findAll();
-        return contractorsList.stream().map(contractors -> new ContractorsDto(contractors)).collect(Collectors.toList());
+        List<Contractors> contractorsOptional = contractorsRepository.findAll();
+        return contractorsOptional.stream().map(contractors -> new ContractorsDto(contractors)).collect(Collectors.toList());
     }
 
     @Override

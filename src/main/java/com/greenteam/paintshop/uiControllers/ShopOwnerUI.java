@@ -1,6 +1,7 @@
 package com.greenteam.paintshop.uiControllers;
 
 import com.greenteam.paintshop.services.ContractorsService;
+import com.greenteam.paintshop.services.JobsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,11 +13,12 @@ public class ShopOwnerUI {
 
     @Autowired
     private ContractorsService contractorsService;
-
+    @Autowired
+    private JobsService jobsService;
     //Home page of Shop owner
     @GetMapping("/shopOwner")
     public String shopOwnerPage(Model model){
-
+        model.addAttribute("listAll", jobsService.getAllJobs());
         return "shopOwner";
     }
 

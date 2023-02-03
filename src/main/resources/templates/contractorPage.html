@@ -10,8 +10,35 @@
 <body>
 <button id="logout" class="btn btn-danger navbar-btn"> <a href="/html/RegisterLogin/login.html" onclick="handleLogout()">Logout</a></button>
 
-<h2>Contractor Page</h2>
+<h2 style="text-align: center">Contractor Page</h2>
+<div th:each="contractor, iterStat : ${contractorById}">
+    <h3 th:text="'Welcome back ' +${contractor.firstName} + '!'"></h3>
+</div>
 
+
+<table class="table" >
+    <thead>
+    <tr>
+        <th>Job ID</th>
+        <th>Job Title</th>
+        <th>Date</th>
+        <th>Client ID</th>
+        <th>Client First Name</th>
+        <th>Client Last Name</th>
+        <th>Products</th>
+    </tr>
+    </thead>
+
+    <tr  th:each="job, iterStat : ${jobsById}" >
+            <td th:text="${job.id}"></td>
+            <td th:text="${job.jobTitle}"></td>
+            <td th:text="${#dates.format(job.date, 'MM/dd/yyyy')}"></td>
+            <td th:text="${job.getClientDto().id}"></td>
+            <td th:text="${job.getClientDto().firstName}"></td>
+            <td th:text="${job.getClientDto().lastName}"></td>
+            <td ></td>
+    </tr>
+</table>
 <script src="/javascript/contractors/contractorHome.js" type="application/javascript"></script>
 
 </body>

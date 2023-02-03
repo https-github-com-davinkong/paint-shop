@@ -1,6 +1,7 @@
 package com.greenteam.paintshop.services;
 
 import com.greenteam.paintshop.dtos.ContractorsDto;
+import com.greenteam.paintshop.dtos.JobsDto;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
@@ -12,14 +13,15 @@ public interface ContractorsService {
 
     List<String> login(ContractorsDto contractorsDto);
 
-    Optional<ContractorsDto> getContractorsById(Long contractorId);
-
+    List<ContractorsDto> getContractorsById(Long contractorId);
 
 
     List<ContractorsDto> getAllContractors();
 
     @Transactional
     void deleteContractorsById(Long contractorId);
+
+    List<JobsDto> getJobsByContractorId(Long contractorId);
 
     List<String> getRoleById(Long contractorId);
 }

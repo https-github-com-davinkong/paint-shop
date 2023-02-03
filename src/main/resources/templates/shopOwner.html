@@ -16,7 +16,35 @@
   <h2 style="text-align: center">Shop Owner Page</h2>
 <br>
 <a th:href="@{/viewAllContractors}" class="btn btn-success btn-lg">View All Contractors</a>
+<table class="table" >
+    <thead>
+    <tr>
+        <th>Job ID</th>
+        <th>Job Title</th>
+        <th>Date</th>
+        <th>Client ID</th>
+        <th>Client First Name</th>
+        <th>Client Last Name</th>
+        <th>Contractor ID</th>
+        <th>Contractor First Name</th>
+        <th>Contractor Last Name</th>
+        <th>Products</th>
+    </tr>
+    </thead>
 
+    <tr  th:each="list, iterStat : ${listAll}" >
+        <td th:text="${list.id}"></td>
+        <td th:text="${list.jobTitle}"></td>
+        <td th:text="${#dates.format(list.date, 'MM/dd/yyyy')}"></td>
+        <td th:text="${list.getClientDto().id}"></td>
+        <td th:text="${list.getClientDto().firstName}"></td>
+        <td th:text="${list.getClientDto().lastName}"></td>
+        <td th:text="${list.getContractorsDto().id}"></td>
+        <td th:text="${list.getContractorsDto().firstName}"></td>
+        <td th:text="${list.getContractorsDto().lastName}"></td>
+        <td ></td>
+    </tr>
+</table>
 <script src="/javascript/shopOwner/shopOwnerPage.js" type="application/javascript"></script>
 
 </body>
