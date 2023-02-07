@@ -1,0 +1,26 @@
+body{
+    background: green;
+    background: linear-gradient(to right,darkolivegreen, turquoise, darkolivegreen);
+}
+
+/*login*/
+.container {
+    position: relative;
+    height: 400px;
+    width: 400px;
+    background-color: whitesmoke;
+    margin: 40px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*register*/
+.container-md{
+    position: relative;
+    height: 550px;
+    width: 600px;
+    background-color: whitesmoke;
+    margin: 40px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
