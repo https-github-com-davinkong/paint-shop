@@ -55,7 +55,9 @@ public class ProductsServiceImpl implements ProductsService {
     @Override
     public void updateProductById(ProductsDto productsDto) {
        Optional<Products> productsOptional = productsRepository.findById(productsDto.getId());
-       productsOptional.ifPresent(products -> {products.setName(productsDto.getName());
+       productsOptional.ifPresent(products -> {products.setPaintColor(productsDto.getPaintColor());
+           products.setDescription(productsDto.getDescription());
+           products.setTools(productsDto.getTools());
        productsRepository.saveAndFlush(products);
        });
     }

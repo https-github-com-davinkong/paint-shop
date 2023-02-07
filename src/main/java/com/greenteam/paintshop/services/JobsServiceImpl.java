@@ -5,9 +5,11 @@ import com.greenteam.paintshop.dtos.JobsDto;
 import com.greenteam.paintshop.entities.Clients;
 import com.greenteam.paintshop.entities.Contractors;
 import com.greenteam.paintshop.entities.Jobs;
+import com.greenteam.paintshop.entities.Products;
 import com.greenteam.paintshop.repositories.ClientsRepository;
 import com.greenteam.paintshop.repositories.ContractorsRepository;
 import com.greenteam.paintshop.repositories.JobsRepository;
+import com.greenteam.paintshop.repositories.ProductsRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,9 @@ public class JobsServiceImpl implements JobsService{
     @Autowired
     private ContractorsRepository contractorsRepository;
 
+    @Autowired
+    private ProductsRepository productsRepository;
+
     @Override
     @Transactional
     public void addJob(JobsDto jobsDto) {
@@ -39,6 +44,9 @@ public class JobsServiceImpl implements JobsService{
 
         Optional<Contractors> contractorsOptional = contractorsRepository.findById(jobsDto.getContractorsDto().getId());
         contractorsOptional.ifPresent(job::setContractors);
+
+        Optional<Products> productsOptional = productsRepository.findById(jobsDto.getProductsDto().getId());
+        productsOptional.ifPresent(job::setProducts);
 
 //        if (job.getContractors() == null) {
 //            job.setContractors(new HashSet<>());
