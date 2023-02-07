@@ -12,15 +12,23 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class ProductsDto implements Serializable {
     private Long id;
-    private String name;
+    private String paintColor;
+    private String description;
+    private String tools;
 
 
     public ProductsDto(Products products){
         if (products.getId() != null){
             this.id = products.getId();
         }
-        if (products.getName() != null){
-            this.name = products.getName();
+        if (products.getPaintColor() != null){
+            this.paintColor = products.getPaintColor();
+        }
+        if (products.getDescription() != null){
+            this.description = products.getDescription();
+        }
+        if (products.getTools() != null){
+            this.tools = products.getTools();
         }
     }
 }

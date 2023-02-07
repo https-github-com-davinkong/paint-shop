@@ -35,9 +35,8 @@ public class Jobs {
     private Instant date;
 
 
-    @OneToMany(mappedBy = "jobs", cascade = CascadeType.ALL)
-    @JsonBackReference
-    private List<Products> products;
+    @OneToOne
+    private Products products;
 
     @OneToOne
     private Contractors contractors;

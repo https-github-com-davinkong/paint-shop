@@ -19,15 +19,28 @@ public class Products {
     private Long id;
 
     @Column
-    private String name;
+    private String paintColor;
+
+    @Column
+    private String description;
+
+    @Column
+    private String tools;
 
 
 
     public Products(ProductsDto productsDto){
-        if (productsDto.getName() != null){
-            this.name = productsDto.getName();
+        if (productsDto.getPaintColor()!= null){
+            this.paintColor = productsDto.getPaintColor();
+        }
+        if (productsDto.getDescription()!= null){
+            this.description = productsDto.getDescription();
+        }
+        if (productsDto.getTools()!= null){
+            this.tools = productsDto.getTools();
         }
     }
-    @ManyToOne
+    @OneToOne(mappedBy = "products", cascade = CascadeType.ALL)
+    @JsonBackReference
     private Jobs jobs;
 }

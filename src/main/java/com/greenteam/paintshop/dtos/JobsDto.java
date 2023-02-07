@@ -24,7 +24,7 @@ public class JobsDto implements Serializable {
     private String jobTitle;
     private Instant date;
     private ContractorsDto contractorsDto;
-    private List<ProductsDto> productsDto = new ArrayList<>();
+    private ProductsDto productsDto;
     private ClientsDto clientDto;
 
     public JobsDto(Jobs jobs) {
@@ -49,6 +49,12 @@ public class JobsDto implements Serializable {
         this.contractorsDto.setEmail(jobs.getContractors().getEmail());
         this.contractorsDto.setPassword(jobs.getContractors().getPassword());
         this.contractorsDto.setIsAdmin(jobs.getContractors().getIsAdmin());
+
+        this.productsDto = new ProductsDto();
+        this.productsDto.setPaintColor(jobs.getProducts().getPaintColor());;
+        this.productsDto.setDescription(jobs.getProducts().getDescription());
+        this.productsDto.setTools(jobs.getProducts().getTools());
+
 //        this.contractorsDto = new HashSet<>();
 //        System.out.println("GET CONTRACTOR: "+jobs.getContractors().toString());
 //        for (Contractors contractor : jobs.getContractors()) {
