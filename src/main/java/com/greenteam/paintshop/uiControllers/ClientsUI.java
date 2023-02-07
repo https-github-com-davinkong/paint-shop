@@ -21,12 +21,10 @@ public class ClientsUI {
     }
 
     // Delete a client
-//    @GetMapping("deleteContractor/{contractorId}")
-//    public String deleteEmployeeById(@PathVariable Long contractorId, Model model) {
-//        contractorsService.deleteContractorsById(contractorId);
-//
-//        //	after delete the contractor from database, redirect to "/viewAllContractors" page
-//        return "redirect:/viewAllContractors";
-//    }
+    @GetMapping("deleteClient/{clientId}")
+    public String deleteClientById(@PathVariable Long clientId, Model model) {
+        clientsService.deleteClientsById(clientId);
+        return "redirect:/clients";
+    }
 
 }
