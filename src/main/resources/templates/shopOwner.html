@@ -16,7 +16,8 @@
   <h2 style="text-align: center">Shop Owner Page</h2>
 <br>
 <a th:href="@{/viewAllContractors}" class="btn btn-success btn-lg">View All Contractors</a>
-<table class="table" >
+
+<table class="table table-responsive" >
     <thead>
     <tr>
         <th>Job ID</th>
@@ -28,7 +29,9 @@
         <th>Contractor ID</th>
         <th>Contractor First Name</th>
         <th>Contractor Last Name</th>
-        <th>Products</th>
+        <th>Paint Color</th>
+        <th>Paint Description</th>
+        <th>Paint Tools</th>
     </tr>
     </thead>
 
@@ -42,9 +45,12 @@
         <td th:text="${list.getContractorsDto().id}"></td>
         <td th:text="${list.getContractorsDto().firstName}"></td>
         <td th:text="${list.getContractorsDto().lastName}"></td>
-        <td ></td>
+        <td th:text="${list.getProductsDto().paintColor}"></td>
+        <td th:text="${list.getProductsDto().description}"></td>
+        <td th:text="${list.getProductsDto().tools}"></td>
     </tr>
 </table>
+
 <script src="/javascript/shopOwner/shopOwnerPage.js" type="application/javascript"></script>
 
 </body>
