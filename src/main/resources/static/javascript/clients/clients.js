@@ -31,8 +31,7 @@ const handleSubmit = async (e) =>{
     if (response.status == 200){
         console.log("client added")
     }
-    document.getElementById("client-fName").value = ''
-    document.getElementById("client-lName").value = ''
+    window.location.replace("http://localhost:8080/clients")
 }
 
 clientForm.addEventListener("submit", handleSubmit)
