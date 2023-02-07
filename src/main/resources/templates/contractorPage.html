@@ -49,7 +49,18 @@
                 <th>Client Last Name:</th>
                 <td th:text="${job.getClientDto().lastName}"></td>
             </tr>
-
+            <tr>
+                <th>Paint Color:</th>
+                <td th:text="${job.getProductsDto().paintColor}"></td>
+            </tr>
+            <tr>
+                <th>Paint Description:</th>
+                <td th:text="${job.getProductsDto().description}"></td>
+            </tr>
+            <tr>
+                <th>Paint Tools:</th>
+                <td th:text="${job.getProductsDto().tools}"></td>
+            </tr>
         </table>
     </div>
 </div>
