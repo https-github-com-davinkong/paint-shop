@@ -49,6 +49,7 @@ public class JobsDto implements Serializable {
         this.contractorsDto.setEmail(jobs.getContractors().getEmail());
         this.contractorsDto.setPassword(jobs.getContractors().getPassword());
         this.contractorsDto.setIsAdmin(jobs.getContractors().getIsAdmin());
+        this.contractorsDto.setJobAssigned(jobs.getContractors().getJobAssigned());
 
         this.productsDto = new ProductsDto();
         this.productsDto.setPaintColor(jobs.getProducts().getPaintColor());;

@@ -19,7 +19,9 @@ public class ContractorsDto implements Serializable {
     private String email;
     private String password;
     private Boolean isAdmin;
+    private Boolean jobAssigned;
     private JobsDto jobsDto;
+
 
 
     public ContractorsDto(Contractors contractors){
@@ -40,6 +42,9 @@ public class ContractorsDto implements Serializable {
         }
         if (contractors.getIsAdmin() != null){
             this.isAdmin = contractors.getIsAdmin();
+        }
+        if (contractors.getJobAssigned() != null){
+            this.jobAssigned = contractors.getJobAssigned();
         }
 
 

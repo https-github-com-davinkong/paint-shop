@@ -38,7 +38,6 @@ public class JobsServiceImpl implements JobsService{
     @Transactional
     public void addJob(JobsDto jobsDto) {
         Jobs job = new Jobs(jobsDto);
-        System.out.println(job.getContractors());
         Optional<Clients> clientsOptional = clientsRepository.findById(jobsDto.getClientDto().getId());
         clientsOptional.ifPresent(job::setClient);
 
@@ -48,28 +47,10 @@ public class JobsServiceImpl implements JobsService{
         Optional<Products> productsOptional = productsRepository.findById(jobsDto.getProductsDto().getId());
         productsOptional.ifPresent(job::setProducts);
 
-//        if (job.getContractors() == null) {
-//            job.setContractors(new HashSet<>());
-//        }
-//        for (ContractorsDto contractorDto : jobsDto.getContractorsDto()) {
-//            Optional<Contractors> contractorOptional = contractorsRepository.findById(contractorDto.getId());
-//            if(contractorOptional.isPresent()) {
-//                var contractor = job.getContractors();
-//                contractor.add(contractorOptional.get());
-////                contractorOptional.get().setJobs(job);
-//                job.setContractors(contractor);
-//
-//            }
-//        }
+        Contractors contractor = contractorsOptional.get();
         jobsRepository.saveAndFlush(job);
-
-//        for (ContractorsDto contractorDto : jobsDto.getContractorsDto()) {
-//            Optional<Contractors> contractorOptional = contractorsRepository.findById(contractorDto.getId());
-//            if(contractorOptional.isPresent()) {
-//                contractorOptional.get().setJobs(job);
-//                contractorsRepository.saveAndFlush(contractorOptional.get());
-//            }
-//        }
+        contractor.setJobAssigned(true);
+        contractorsRepository.saveAndFlush(contractor);
 
         System.out.println(jobsDto.getContractorsDto());
         System.out.println("Job added successfully");

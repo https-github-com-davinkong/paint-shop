@@ -30,6 +30,9 @@ public class Contractors {
     @Column
     private Boolean isAdmin;
 
+    @Column
+    private Boolean jobAssigned;
+
 
     @OneToOne(mappedBy = "contractors", cascade = CascadeType.ALL)
     @JsonBackReference
@@ -49,6 +52,9 @@ public class Contractors {
         }
         if (contractorsDto.getIsAdmin() != null){
             this.isAdmin = contractorsDto.getIsAdmin();
+        }
+        if (contractorsDto.getJobAssigned() != null){
+            this.jobAssigned = contractorsDto.getJobAssigned();
         }
 
     }
