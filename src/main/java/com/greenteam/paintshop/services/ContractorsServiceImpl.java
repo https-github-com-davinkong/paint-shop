@@ -109,6 +109,12 @@ public class ContractorsServiceImpl implements ContractorsService {
     }
 
     @Override
+    public List<ContractorsDto> getAllContractorsWithoutAJob() {
+        List<Contractors> contractorsOptional = contractorsRepository.findAll();
+        return contractorsOptional.stream().map(ContractorsDto::new).filter(contractors -> !contractors.getJobAssigned()).collect(Collectors.toList());
+    }
+
+    @Override
     @Transactional
     public void deleteContractorsById(Long contractorId){
         Contractors contractors = contractorsRepository.getById(contractorId);
@@ -117,4 +123,6 @@ public class ContractorsServiceImpl implements ContractorsService {
         }
         contractorsRepository.deleteById(contractorId);
     }
+
+
 }

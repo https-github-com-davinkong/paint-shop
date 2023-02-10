@@ -23,7 +23,7 @@ public class JobsUI {
     private JobsRepository jobsRepository;
 
     @Autowired
-    private ContractorsRepository contractorsRepository;
+    private ContractorsService contractorsService;
 
     @Autowired
     private ClientsRepository clientsRepository;
@@ -36,7 +36,7 @@ public class JobsUI {
 //        model.addAttribute("client", new Clients());
         model.addAttribute("clients", clientsRepository.findAll());
         model.addAttribute("products", productsRepository.findAll());
-        model.addAttribute("contractors", contractorsRepository.findAll());
+        model.addAttribute("contractors", contractorsService.getAllContractorsWithoutAJob());
         model.addAttribute("job", new Jobs());
         return "jobs";
     }

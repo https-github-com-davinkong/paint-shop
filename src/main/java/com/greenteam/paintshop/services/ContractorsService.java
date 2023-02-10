@@ -15,6 +15,7 @@ public interface ContractorsService {
 
     List<ContractorsDto> getContractorsById(Long contractorId);
 
+    List<ContractorsDto> getAllContractorsWithoutAJob();
 
     List<ContractorsDto> getAllContractors();
 

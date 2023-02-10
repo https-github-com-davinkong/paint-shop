@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>Clients</title>
+  <title>Add a new Job</title>
   <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -58,18 +58,20 @@
   <div class="row height d-flex justify-content-center">
     <div class="col-md-8">
 
-      <form method="post" th:action="@{/jobs}">
+      <form method="post" id="form-save-job" >
         <div>
           <label for="jobTitle">Job Title:</label>
           <input type="text" id="jobTitle" required="required"/>
         </div>
         <div>
           <label for="client">Client:</label>
-          <select id="client" class="form-control" th:field="*{client}" required="required">
+          <select id="client" class="form-control" required="required">
             <option value="" selected="selected">Choose a client</option>
             <option th:each="client : ${clients}"
                     th:value="${client.id}"
-                    th:text="${client.firstName}"/>
+                    th:text="${client.firstName} + ' ' + ${client.lastName}"
+                    th:data-first-name="${client.firstName}"
+                    th:data-last-name="${client.lastName}"/>
           </select>
         </div>
         <div>
@@ -78,7 +80,10 @@
             <option value="" selected="selected">Choose a product</option>
             <option th:each="product : ${products}"
                     th:value="${product.id}"
-                    th:text="${product.description}"/>
+                    th:text="${product.description}"
+                    th:data-paint-color="${product.paintColor}"
+                    th:data-description="${product.description}"
+                    th:data-tools="${product.tools}"/>
           </select>
         </div>
         <div>
@@ -87,14 +92,18 @@
             <option value="" selected="selected">Choose a contractor</option>
             <option th:each="contractor : ${contractors}"
                     th:value="${contractor.id}"
-                    th:text="${contractor.firstName}"/>
+                    th:text="${contractor.firstName} + ' ' + ${contractor.lastName}"
+                    th:data-first-name="${contractor.firstName}"
+                    th:data-last-name="${contractor.lastName}"
+                    th:data-email="${contractor.email}"
+                    th:data-isAdmin="${contractor.isAdmin}"/>
           </select>
         </div>
         <div>
           <label for="due-date">Due Date:</label>
           <input type="date" id="due-date" name="due-date">
         </div>
-        <button type="submit" class="btn btn-primary mt-3">Save</button>
+        <button type="submit" id="save-job-btn" class="btn btn-primary mt-3">Save</button>
       </form>
 
 
@@ -109,7 +118,7 @@
 
 
 
-<!--<script src="/javascript/clients/clients.js" type="application/javascript"></script>-->
+<script src="/static/javascript/jobs/jobs.js" type="application/javascript"></script>
 </body>
 </html>
 
