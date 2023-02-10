@@ -1,5 +1,6 @@
 package com.greenteam.paintshop.controllers;
 
+import com.greenteam.paintshop.dtos.ClientsDto;
 import com.greenteam.paintshop.dtos.ProductsDto;
 import com.greenteam.paintshop.services.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +15,19 @@ public class ProductsController {
     @Autowired
     private ProductsService productsService;
 
-    @GetMapping("/jobs/{jobId}")
-    public List<ProductsDto> getProductsByJob(@PathVariable Long jobId){
-        return productsService.getAllProductsByJobId(jobId);
-    }
+//    @GetMapping("/jobs/{jobId}")
+//    public List<ProductsDto> getProductsByJob(@PathVariable Long jobId){
+//        return productsService.getAllProductsByJobId(jobId);
+//    }
+
     //Add a new product
-    @PostMapping("/jobs/{jobId}")
-    public void addProduct(@RequestBody ProductsDto productsDto, @PathVariable Long jobId){
-        productsService.addProduct(productsDto, jobId);
+//    @PostMapping("/jobs/{jobId}")
+//    public void addProduct(@RequestBody ProductsDto productsDto, @PathVariable Long jobId){
+//        productsService.addProduct(productsDto, jobId);
+//    }
+    @PostMapping("/product")
+    public void addProduct(@RequestBody ProductsDto productsDto){
+        productsService.addProduct(productsDto);
     }
 
 
@@ -48,5 +54,11 @@ public class ProductsController {
     @GetMapping("/{productsId}")
     public Optional<ProductsDto> getProductById(@PathVariable Long productsId){
         return productsService.getProductById(productsId);
+    }
+
+    // GET all clients
+    @GetMapping("/products")
+    public List<ProductsDto> getProducts(){
+        return productsService.getAllProducts();
     }
 }

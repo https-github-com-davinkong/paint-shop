@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface ProductsService {
     //Adding a product
     @Transactional
-    void addProduct(ProductsDto productsDto, Long jobId);
+    void addProduct(ProductsDto productsDto);
 
     @Transactional
     void addAProduct(ProductsDto productsDto);
@@ -23,7 +23,7 @@ public interface ProductsService {
     void updateProductById(ProductsDto productsDto);
 
     //Finding all products
-    List<ProductsDto> getAllProductsByJobId(Long jobId);
+    List<ProductsDto> getAllProducts();
 
 
 
