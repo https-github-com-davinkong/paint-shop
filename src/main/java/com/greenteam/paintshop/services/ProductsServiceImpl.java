@@ -1,7 +1,9 @@
 package com.greenteam.paintshop.services;
 
 
+import com.greenteam.paintshop.dtos.ClientsDto;
 import com.greenteam.paintshop.dtos.ProductsDto;
+import com.greenteam.paintshop.entities.Clients;
 import com.greenteam.paintshop.entities.Jobs;
 import com.greenteam.paintshop.entities.Products;
 import com.greenteam.paintshop.repositories.JobsRepository;
@@ -24,13 +26,20 @@ public class ProductsServiceImpl implements ProductsService {
 
 
    //Adding a product
+//   @Override
+//   @Transactional
+//    public void addProduct(ProductsDto productsDto, Long jobId) {
+//       Optional<Jobs> jobsOptional = jobsRepository.findById(jobId);
+//       Products products = new Products(productsDto);
+//       jobsOptional.ifPresent(products::setJobs);
+//       productsRepository.saveAndFlush(products);
+//   }
    @Override
-   @Transactional
-    public void addProduct(ProductsDto productsDto, Long jobId) {
-       Optional<Jobs> jobsOptional = jobsRepository.findById(jobId);
+   @org.springframework.transaction.annotation.Transactional
+   public void addProduct(ProductsDto productsDto){
        Products products = new Products(productsDto);
-       jobsOptional.ifPresent(products::setJobs);
        productsRepository.saveAndFlush(products);
+       // System.out.println("product saved" + productss);
    }
 
 
@@ -65,15 +74,23 @@ public class ProductsServiceImpl implements ProductsService {
 
 
     //Finding all products
+//    @Override
+//    public List<ProductsDto> getAllProductsByJobId(Long jobId){
+//       Optional<Jobs> jobsOptional = jobsRepository.findById(jobId);
+//       if (jobsOptional.isPresent()){
+//           List<Products> productsList = productsRepository.findAllByJobsEquals(jobsOptional.get());
+//           return productsList.stream().map(products -> new ProductsDto(products)).collect(Collectors.toList());
+//       }
+//       return Collections.emptyList();
+//    }
+
+    // get all clients
     @Override
-    public List<ProductsDto> getAllProductsByJobId(Long jobId){
-       Optional<Jobs> jobsOptional = jobsRepository.findById(jobId);
-       if (jobsOptional.isPresent()){
-           List<Products> productsList = productsRepository.findAllByJobsEquals(jobsOptional.get());
-           return productsList.stream().map(products -> new ProductsDto(products)).collect(Collectors.toList());
-       }
-       return Collections.emptyList();
+    public List<ProductsDto> getAllProducts(){
+        List<Products> productsList = productsRepository.findAll();
+        return productsList.stream().map(products -> new ProductsDto(products)).collect(Collectors.toList());
     }
+
 
     //Getting a product by the product id
     @Override

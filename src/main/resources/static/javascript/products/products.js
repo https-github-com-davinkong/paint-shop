@@ -19,8 +19,9 @@ const handleSubmit = async (e) =>{
     e.preventDefault()
     let bodyObj = {
         paintColor: productPaintColor.value,
-        description: productDescription.value,
         tools: productTools.value,
+        description: productDescription.value,
+
     }
     const response = await fetch(`${baseUrl}/product`, {
         method: "POST",
