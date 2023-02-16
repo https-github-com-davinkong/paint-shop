@@ -9,7 +9,46 @@
 </head>
 <body>
 
-<a th:href="@{/shopOwner}" class="btn btn-success btn-lg">Back to Shop Owner Page</a>
+<!--<a th:href="@{/shopOwner}" class="btn btn-success btn-lg">Back to Shop Owner Page</a>-->
+
+<!--        NAV BAR-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand px-4" href="#"> PaintersPro </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/shopOwner}" >Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/jobs/new}" >Jobs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/viewAllContractors}" >Contractors</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/clients}">Clients</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/products}">Products</a>
+            </li>
+
+        </ul>
+
+        <span class="navbar-text ms-auto px-4">
+            <a id="logout" class="text-decoration-none px-2" href="/html/RegisterLogin/login.html" onclick="handleLogout()">LOGOUT</a>
+        </span>
+
+    </div>
+</nav>
+<br><br><br><br>
+
 
 <h2>Contractors List</h2>
 

@@ -10,12 +10,54 @@
 
 </head>
 <body>
-<a id="logout" href="/html/RegisterLogin/login.html" class="btn btn-danger btn-lg" onclick="handleLogout()">
-    Log out
-</a>
+
+
+<!--        NAV BAR-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand px-4" href="#"> PaintersPro </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/shopOwner}" >Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/jobs/new}" >Jobs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/viewAllContractors}" >Contractors</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/clients}">Clients</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/products}">Products</a>
+            </li>
+
+        </ul>
+
+        <span class="navbar-text ms-auto px-4">
+            <a id="logout" class="text-decoration-none px-2" href="/html/RegisterLogin/login.html" onclick="handleLogout()">LOGOUT</a>
+        </span>
+
+    </div>
+</nav>
+<br><br><br><br>
+
+
+<!--<a id="logout" href="/html/RegisterLogin/login.html" class="btn btn-danger btn-lg" onclick="handleLogout()">-->
+<!--    Log out-->
+<!--</a>-->
+
   <h2 style="text-align: center">Shop Owner Page</h2>
 <br>
-<a th:href="@{/viewAllContractors}" class="btn btn-success btn-lg">View All Contractors</a>
+<!--<a th:href="@{/viewAllContractors}" class="btn btn-success btn-lg">View All Contractors</a>-->
 
 <table class="table table-responsive" >
     <thead>
