@@ -27,6 +27,10 @@ formSaveJob.addEventListener('submit', async (e) => {
            let responseArr = await response.json();
            console.log(responseArr);
            window.alert("Job added successfully")
+
+           //clear the form inputs
+           formSaveJob.reset();
+
 })
 
 function getFormValues() {
