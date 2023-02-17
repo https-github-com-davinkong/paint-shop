@@ -39,6 +39,7 @@ public class ContractorsServiceImpl implements ContractorsService {
         }else {
             contractors.setIsAdmin(false);
         }
+        contractors.setJobAssigned(false);
         contractorsRepository.saveAndFlush(contractors);
         response.add("http://localhost:8080/html/RegisterLogin/login.html");
         return response;
