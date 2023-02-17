@@ -40,5 +40,12 @@ public class ShopOwnerUI {
         return "redirect:/viewAllContractors";
     }
 
+    @GetMapping("deleteJob/{jobId}")
+    public String deleteAJobById(@PathVariable Long jobId, Model model) {
+        System.out.println("deleteAJobByID reached - ShopOwnerUI");
+        jobsService.deleteJobById(jobId);
+        //	after delete the contractor from database, redirect to "/viewAllContractors" page
+        return "redirect:/shopOwner";
+    }
 
 }

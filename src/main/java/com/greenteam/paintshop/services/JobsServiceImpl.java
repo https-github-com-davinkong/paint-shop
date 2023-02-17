@@ -1,7 +1,9 @@
 package com.greenteam.paintshop.services;
 
+import com.greenteam.paintshop.dtos.ClientsDto;
 import com.greenteam.paintshop.dtos.ContractorsDto;
 import com.greenteam.paintshop.dtos.JobsDto;
+import com.greenteam.paintshop.dtos.ProductsDto;
 import com.greenteam.paintshop.entities.Clients;
 import com.greenteam.paintshop.entities.Contractors;
 import com.greenteam.paintshop.entities.Jobs;
@@ -60,8 +62,28 @@ public class JobsServiceImpl implements JobsService{
     @Transactional
     @Override
     public void deleteJobById(Long jobId) {
-        Optional<Jobs> jobsOptional = jobsRepository.findById(jobId);
-        jobsOptional.ifPresent(job -> jobsRepository.delete(job));
+        var job = jobsRepository.findById(jobId);
+        Long clientId = getJobById(jobId).get().getClientDto().getId();
+        Long productId = getJobById(jobId).get().getProductsDto().getId();
+        Long contractorId = getJobById(jobId).get().getContractorsDto().getId();
+
+
+        Optional<Clients> clientOptional = clientsRepository.findById(clientId);
+        Optional<Products> productsOptional = productsRepository.findById(productId);
+        Optional<Contractors> contractorsOptional = contractorsRepository.findById(contractorId);
+
+        clientOptional.get().setJobsSet(null);
+        productsOptional.get().setJobs(null);
+        contractorsOptional.get().setJobAssigned(false);
+        contractorsOptional.get().setJobs(null);
+
+        clientsRepository.saveAndFlush(clientOptional.get());
+        productsRepository.saveAndFlush(productsOptional.get());
+        contractorsRepository.saveAndFlush(contractorsOptional.get());
+        jobsRepository.delete(job.get());
+
+
+
     }
 
     @Transactional

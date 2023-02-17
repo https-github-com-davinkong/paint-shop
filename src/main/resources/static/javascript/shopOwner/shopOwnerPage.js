@@ -11,7 +11,7 @@ const baseUrl = 'http://localhost:8080/api/v1/contractors'
 //check Login user only
 if (contractorsId == null){
     window.alert("You are not authorized to access this page...");
-    window.location.replace("http://localhost:8080/html/RegisterLogin/login.html");
+    window.location.replace("http://localhost:8080/static/html/RegisterLogin/login.html");
 }
 
 //check Admin access only
@@ -27,7 +27,7 @@ async function getRoleById(contractorsId) {
             }else{
                 console.log("contractor")
                 window.alert("You are not authorized to access this page...");
-                window.location.replace("http://localhost:8080/html/RegisterLogin/login.html");
+                window.location.replace("http://localhost:8080/static/html/RegisterLogin/login.html");
             }
     })
         .catch(err => console.error(err))
