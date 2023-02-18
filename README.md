@@ -41,6 +41,9 @@ Welcome to PaintersPro, a Java and Spring Boot web application. PaintersPro help
 - On the shop owner page, we implemented a getJobsByContractorId to retrieve any active jobs for each contractor as well as product, and client.
 ![shopowner](https://i.ibb.co/cXGzbpY/shop-owner.png)
 
+- On the view all Contractors page, contractor’s information uses findAll method from JpaRepository. 
+- ![viewAllContractors](https://i.ibb.co/kG1GqC5/contractors.png)
+
 ### Contractors Home Page
 - For the contractor page, if there is an active job for a contractor, findAllByContractorsEquals from the job repository will show the job, product, and client.
 
