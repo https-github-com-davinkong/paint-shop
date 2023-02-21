@@ -15,7 +15,7 @@ Welcome to PaintersPro, a Java and Spring Boot web application. PaintersPro help
 
 ## Features
 
- - 📹 Full video walk-through: Coming Soon
+ - 📹 [Full video walk-through](https://youtu.be/gwdp3JrfrlY)
 ### Login and Register
 - Contractors can add themselves to the database. We use BCryptPasswordEncoder to encode the user’s password to the hash string for better security. 
 -  We also set the role if users are contractors or shopOwner, by using boolean isAdmin true or false.
